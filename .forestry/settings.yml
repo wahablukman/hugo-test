@@ -24,6 +24,8 @@ sections:
   label: Home slideshows
   create: all
   match: "**/*"
+  templates:
+  - home-slideshows
 - type: directory
   path: content/blogs
   label: Blogs
