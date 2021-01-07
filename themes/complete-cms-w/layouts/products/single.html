@@ -1,0 +1,110 @@
+{{ define "main" }}
+
+<div class="product single-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 product-slideshows">
+
+          <div id="primary-slider" class="splide">
+            <div class="splide__track">
+              <div class="splide__list">
+                  {{ range .Params.productImages }}
+                    <div class="splide__slide">
+                      <img src="{{ . }}">
+                    </div>
+                  {{ end }}
+              </div>
+            </div>
+          </div>
+          <div id="secondary-slider" class="splide">
+            <div class="splide__track">
+              <div class="splide__list">
+                {{ range .Params.productImages }}
+                  <div class="splide__slide">
+                    <img src="{{ . }}">
+                  </div>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        
+      </div>
+      <div class="col-md-6 other-details">
+        <div class="title">
+          {{ .Params.title }}
+        </div>
+        <div class="original-price {{ cond (gt .Params.discountedPrice 0) `discounted` ``  }}">
+          Rp. {{ lang.NumFmt 0 .Params.originalPrice "- , ." }}
+        </div>
+        {{ if gt .Params.discountedPrice 0 }}
+          <div class="discounted-price">
+            Rp. {{ lang.NumFmt 0 .Params.discountedPrice "- , ." }}
+          </div>
+        {{ end }}
+        <hr>
+        <div class="description">
+          {{ .Content }}
+        </div>
+        <div class="store-links">
+          {{ if not (eq .Params.tokpedURL "") }}
+            <a class="link tokopedia btn btn-primary" href="{{ .Params.tokpedURL }}">
+              <img src="/images/3rdparty-logos/logoicon-tokopedia.png" class="logo" alt="">
+              <div class="text">Shop this product on Tokopedia</div>
+            </a>
+          {{ end }}
+          {{ if not (eq .Params.shopeeURL "") }}
+            <a class="link shopee btn btn-primary" href="{{ .Params.shopeeURL }}">
+              <img src="/images/3rdparty-logos/logoicon-shopee.png" class="logo" alt="">
+              <div class="text">Shop this product on Shopee</div>
+            </a>
+          {{ end }}
+          {{ if not (eq .Params.bukalapakURL "") }}
+            <a class="link bukalapak btn btn-primary" href="{{ .Params.bukalapakURL }}">
+              <img src="/images/3rdparty-logos/logoicon-bukalapak.png" class="logo" alt="">
+              <div class="text">Shop this product on Bukalapak</div>
+            </a>
+          {{ end }}
+          {{ if not (eq .Params.olxURL "") }}
+            <a class="link olx btn btn-primary" href="{{ .Params.olxURL }}">
+              <img src="/images/3rdparty-logos/logoicon-olx.png" class="logo" alt="">
+              <div class="text">Shop this product on OLX</div>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script>
+  document.addEventListener( 'DOMContentLoaded', function () {
+    var secondarySlider = new Splide( '#secondary-slider', {
+      fixedWidth  : 120,
+      height      : 120,
+      gap         : 5,
+      cover       : true,
+      isNavigation: true,
+      loop: true,
+      breakpoints : {
+        '600': {
+          fixedWidth: 66,
+          height    : 40,
+        }
+      },
+    } ).mount();
+    
+    var primarySlider = new Splide( '#primary-slider', {
+      type       : 'fade',
+      heightRatio: 1,
+      pagination : false,
+      arrows     : false,
+      cover      : true,
+    } ); // do not call mount() here.
+    
+    primarySlider.sync( secondarySlider ).mount();
+  } );
+</script>
+
+{{ end }}

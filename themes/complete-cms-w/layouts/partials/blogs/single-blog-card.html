@@ -1,0 +1,19 @@
+<a class="card" href="{{ .RelPermalink }}">
+  <div class="featured-image">
+    <img src="{{ .Params.featuredImage }}" alt="">
+  </div>
+  <div class="title">{{ .Params.title | truncate 25 }}</div>
+  <div class="paragraph">
+    {{ .Content | truncate 90 }}
+  </div>
+  <div class="tags">
+    {{ range first 2 .Params.tags }}
+      <div class="tag">
+        {{ . }}
+      </div>
+    {{ end }}
+  </div>
+  <div class="btn btn-primary" href="{{ .RelPermalink }}">
+    <div>See More <i class="fas fa-chevron-right"></i></div>
+  </div>
+</a>

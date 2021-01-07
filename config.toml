@@ -1,0 +1,18 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "complete-cms-w"
+disqusShortname = "http-localhost-1313-11"
+
+[Params]
+  subtitle = "Hugo Blog Template for GitLab Pages"
+  logo = "/images/logo.svg"
+  favicon = "/images/logo.svg"
+  dateDefaultFormat = "Monday, Jan 2, 2006"
+  whatsappNumber = "+61430984060"
+  ownerName = "WL"
+
+[Taxonomies]
+  tag = "tags"
+  category = "categories"
+  color = "colors"

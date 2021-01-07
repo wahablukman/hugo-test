@@ -1,0 +1,15 @@
+<section class="section-4 products">
+  <div class="container">
+    <div class="row">
+      <!-- <h1 class="title">About</h1>
+      <div class="about">
+        {{ with .Site.GetPage "/about" }}{{ .Content }}{{ end }}
+      </div> -->
+      {{ range where .Site.RegularPages "Section" "products" }}
+        <div class="col-md-4 card-wrapper product">
+          {{ partial "products/single-product-card.html" . }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

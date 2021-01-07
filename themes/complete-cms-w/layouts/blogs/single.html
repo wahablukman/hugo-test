@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+<div class="blogpost">
+  <div class="container">
+    <div class="row">
+
+      <div class="content col-md-12">
+        <h1 class="title">{{ .Params.title }}</h1>
+        <div class="date-and-author">
+          <span class="author"> Written by {{ .Params.author }} </span>
+          <i class="fas fa-circle"></i>
+          <span class="date"> Posted on {{ .Params.date.Format .Site.Params.dateDefaultFormat }} </span>
+        </div>
+        <div class="featured-image">
+          <img src="{{ .Params.featuredImage }}" alt="">
+        </div>
+        <div class="paragraph">
+          {{ .Content }}
+        </div>
+        <div class="tags">
+          {{ range .Params.tags }}
+            <a class="tag" href="/tags/{{ . }}"> {{ . }} </a>
+          {{ end }}
+        </div>
+        <div class="disqus-comments">
+          {{ template "_internal/disqus.html" . }}
+        </div>
+      </div>
+
+      <h2 class="sub-title">Latest News</h2>
+      <div class="latest-news row">
+        {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
+          <div class="col-md-6 card-wrapper blog">
+            {{ partial "blogs/single-blog-card.html" . }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ end }}

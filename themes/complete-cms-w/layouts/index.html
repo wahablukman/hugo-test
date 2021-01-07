@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<!-- section 1 -->
+{{ partial "homepage/section-1.html" . }}
+
+<!-- section 2 -->
+{{ partial "homepage/section-4.html" . }}
+
+<!-- Section 3 -->
+{{ partial "homepage/section-3.html" . }}
+
+<!-- section 4 -->
+{{ partial "homepage/section-2.html" . }}
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script>
+  // new Splide( '#splide', {
+  //   type   : 'loop'
+  // }).mount();
+	new Splide( '#splide-2', {
+    'arrowPath': 'm15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z',
+    type   : 'loop',
+    padding: {
+      right: '10rem',
+      left : '10rem',
+    },
+    perPage: 2,
+  } ).mount();
+</script>
+
+
+{{ end }}

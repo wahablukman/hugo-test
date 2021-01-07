@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<div class="tags list-page">
+  <div class="container">
+    <div class="row">
+      <h1 class="title">Tag: {{ .Title }} {{ .Params.count }} </h1>
+      {{ range .Data.Pages }}
+        <div class="col-md-4 card-wrapper blog">
+          {{ partial "blogs/single-blog-card.html" . }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+  <!-- {{ range .Site.Taxonomies.tags }}
+    <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
+  {{ end }} -->
+</div>
+
+{{ end }}
