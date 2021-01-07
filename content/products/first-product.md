@@ -1,7 +1,7 @@
 ---
 title: "T-Shirt Cool 1"
 date: 2020-12-18T14:53:49+07:00
-draft: true
+draft: false
 originalPrice: 125000
 discountedPrice: 80000
 tags: []

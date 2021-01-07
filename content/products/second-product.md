@@ -1,7 +1,7 @@
 ---
 title: "Second Product"
 date: 2020-12-18T14:55:09+07:00
-draft: true
+draft: false
 originalPrice: 155000
 discountedPrice: 75000
 tags: []

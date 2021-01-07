@@ -1,7 +1,7 @@
 ---
 title: "Regular Tee"
 date: 2021-01-05T08:30:17+07:00
-draft: true
+draft: false
 originalPrice: 200000
 discountedPrice: 0
 tags: []

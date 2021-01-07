@@ -1,7 +1,7 @@
 ---
 name: "Saad"
 date: 2020-12-24T11:59:41+07:00
-draft: true
+draft: false
 avatar: "/images/testimony-2.jpg"
 ---
 

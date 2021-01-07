@@ -1,7 +1,7 @@
 ---
 name: "Katy Perry"
 date: 2020-12-24T11:59:28+07:00
-draft: true
+draft: false
 avatar: "/images/testimony-1.jpg"
 ---
 

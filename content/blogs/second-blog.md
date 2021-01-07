@@ -1,7 +1,7 @@
 ---
 title: "Second Blog"
 date: 2020-12-18T14:54:02+07:00
-draft: true
+draft: false
 featuredImage: "/images/image-2.jpg"
 tags: 
   - world

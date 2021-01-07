@@ -1,7 +1,7 @@
 ---
 title: "Limited Edition Tee"
 date: 2021-01-05T09:23:43+07:00
-draft: true
+draft: false
 originalPrice: 350000
 discountedPrice: 120000
 tags: []

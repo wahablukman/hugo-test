@@ -1,7 +1,7 @@
 ---
 title: "First Blog"
 date: 2020-12-18T14:53:30+07:00
-draft: true
+draft: false
 featuredImage: "/images/image-1.jpg"
 tags: 
   - world

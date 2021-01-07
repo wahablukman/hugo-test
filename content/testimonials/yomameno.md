@@ -1,7 +1,7 @@
 ---
 name: "Hideo Kojima"
 date: 2020-12-29T20:43:43+07:00
-draft: true
+draft: false
 avatar: "/images/testimony-4.jpg"
 ---
 
