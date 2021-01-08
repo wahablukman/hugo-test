@@ -8,15 +8,17 @@
           <div><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</div>
         {{ end }}
       </div> -->
-      <div class="col-md-12 row">
-        <h1 class="title col-md-12">Latest News & Issues</h1>
-        {{ range (.Paginator 6).Pages }}
-          <div class="col-md-4 card-wrapper blog">
-            {{ partial "blogs/single-blog-card.html" . }}
+      <div class="col-md-12 container">
+        <div class="row">
+          <h1 class="title col-md-12">Latest News & Issues</h1>
+          {{ range (.Paginator 6).Pages }}
+            <div class="col-md-4 card-wrapper blog">
+              {{ partial "blogs/single-blog-card.html" . }}
+            </div>
+          {{ end }}
+          <div class="custom-pagination col-md-12">
+            {{ template "_internal/pagination.html" . }}
           </div>
-        {{ end }}
-        <div class="custom-pagination col-md-12">
-          {{ template "_internal/pagination.html" . }}
         </div>
       </div> 
     </div>

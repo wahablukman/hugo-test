@@ -28,12 +28,14 @@
       </div>
 
       <h2 class="sub-title">Latest News</h2>
-      <div class="latest-news row">
-        {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
-          <div class="col-md-6 card-wrapper blog">
-            {{ partial "blogs/single-blog-card.html" . }}
-          </div>
-        {{ end }}
+      <div class="latest-news container">
+        <div class="row">
+          {{ range first 2 (where .Site.RegularPages "Section" "blogs") }}
+            <div class="col-md-6 card-wrapper blog">
+              {{ partial "blogs/single-blog-card.html" . }}
+            </div>
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
