@@ -4,6 +4,9 @@
         {{ partial "head.html" . }}
     </head>
     <body>
+        <div id="notification" class="d-none notification">
+          <div class="text">Cart Updated!</div>
+        </div>
         {{ partial "header.html" . }}
         <div id="content">
         {{ block "main" . }}{{ end }}

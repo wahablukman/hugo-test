@@ -70,14 +70,129 @@ nav {
             font-weight: 400;
           }
         }
+        li.dropdown {
+          .dropdown-menu {
+            left: unset;
+            right: 0;
+            min-width: 400px;
+            padding: 0;
+          }
+          .btn {
+            font-size: 0.8rem;
+          }
+          i {
+            margin-right: 3px;
+          }
+          .badge {
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            border-radius: 50px;
+            height: 20px;
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
       }
     }
   }
 }
 
+.empty {
+  text-align: center;
+  padding: 60px;
+}
+
 #content {
   height: 100%;
   // margin-top:78.72px;
+}
+
+.cart-products {
+  display: flex;
+  flex-direction: column;
+  >.title, .total-price, .view-cart {
+    background-color:rgba(0, 0, 0, 0.03);
+    padding: 15px 20px;
+    font-weight: 200;
+    margin-bottom: 0px;
+  }
+  .total-price, .view-cart {
+    margin-bottom: 0;
+  }
+  .total-price {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    .price {
+      margin-left: auto;
+    }
+  }
+  .view-cart {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    &:hover { 
+      opacity: 0.7;
+      transition: all 0.3s;
+    }
+  }
+  .cart-product {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    &:first-child {
+      border-top: 0px solid rgba(0, 0, 0, 0.1);
+    }
+    .image {
+      height: 120px;
+      width: 35%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .other-details {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 15px;
+      .title, .cart-quantity, .price {
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .price {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 0.7rem;
+      }
+      .cart-quantity {
+        font-weight: 300;
+      }
+      .trash {
+        margin-top: auto;
+        cursor: pointer;
+        justify-self: flex-end;
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.notification {
+  position: fixed;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 10px;
+  font-weight: 800;
+  z-index: 6;
+  padding: 20px 80px;
+  color: white;
+  background-color:rgb(45, 223, 148);
 }
 
 section {
@@ -639,49 +754,97 @@ section {
           .description {
             line-height: 1.7;
           }
-          .store-links {
-            margin-top: auto;
-            align-self: flex-end;
-            margin-top: 60px;
-            .link {
-              padding: 12px 22px;
-              border: 0px solid black;
-              border-radius: 50px;
-              margin-bottom: 10px;
+          .store-links-title {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: black;
+            text-transform: uppercase;
+          }
+          .link {
+            padding: 8px 15px;
+            border: 0px solid black;
+            border-radius: 4px;
+            margin: 0 3px;
+            margin-bottom: 10px;
+            transition: all .3s;
+            background-color: transparent;
+            font-size: 0.8rem;
+            &:hover {
+              opacity: 0.7;
               transition: all .3s;
-              display: block;
-              background-color: transparent;
-              font-size: 0.8rem;
-              &:hover {
-                opacity: 0.7;
-                transition: all .3s;
+            }
+            &.add-to-cart {
+              color: white;
+              background-color: rgb(52, 38, 253);
+              font-weight: 600;
+            }
+            &.whatsapp {
+              color: white;
+              background-color: rgb(0, 216, 0);
+              font-weight: 600;
+            }
+            &.tokopedia {
+              border: 1px solid green;
+              color: green;
+            }
+            &.shopee {
+              border: 1px solid orange;
+              color: orange;
+            }
+            &.bukalapak {
+              border: 1px solid maroon;
+              color: maroon;
+            }
+            &.olx {
+              border: 1px solid navy;
+              color: navy;
+            }
+            .logo {
+              width: 15px;
+              height: 15px;
+            }
+            .logo, i {
+              margin-right: 10px;
+            }
+            .text {
+              display: inline-block;
+              width: auto;
+            }
+          }
+          .buy-and-cart {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .cart-quantity {
+              width: 100%;
+              padding: 0 3px;
+              margin-bottom: 20px;
+              display: flex;
+              flex-direction: row;
+              .btn {
+                font-size: 0.5rem;
+                padding: 3px 7px;
+                border-radius: 0;
               }
-              &.tokopedia {
-                border: 1px solid green;
-                color: green;
-              }
-              &.shopee {
-                border: 1px solid orange;
-                color: orange;
-              }
-              &.bukalapak {
-                border: 1px solid maroon;
-                color: maroon;
-              }
-              &.olx {
-                border: 1px solid navy;
-                color: navy;
-              }
-              .logo {
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
-              }
-              .text {
-                display: inline-block;
-                width: auto;
+              .quantity {
+                margin: 0 2px;
+                padding: 0 10px;
               }
             }
+            .link {
+              flex: 1;
+              padding: 12px 20px;
+            }
+          }
+          .store-links {
+            margin-top: auto;
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin-top: 10px;
           }
         }
       }

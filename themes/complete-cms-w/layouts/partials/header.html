@@ -20,7 +20,264 @@
         <li class="nav-item">
           <a class="nav-link" href="/contact-us">Contact Us</a>
         </li>
+        <li class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button">
+            <i class="fas fa-shopping-cart"></i> Cart <span class="cart-badge badge d-none bg-danger"></span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="cart-products">
+
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener( 'DOMContentLoaded', function () {
+    // update notification
+    function updateNotification(text, successOrError) {
+      const notificationEl = document.querySelector('#notification');
+      notificationEl.classList.remove('d-none');
+      if(successOrError === 'success') {
+        notificationEl.classList.add('success');
+      } else {
+        notificationEl.classList.add('error');
+      }
+      notificationEl.classList.add('animate__animated');
+      notificationEl.classList.add('animate__backInDown');
+      // notificationEl.children.innerText = text;
+      notificationEl.addEventListener('animationend', () => {
+        setTimeout(() => {
+          notificationEl.classList.remove('animate__animated');
+          notificationEl.classList.remove('animate__backInDown');
+          notificationEl.classList.add('d-none');
+          if(successOrError === 'success') {
+            notificationEl.classList.remove('success');
+          } else {
+            notificationEl.classList.remove('error');
+          }
+        }, 2000);
+        // setTimeout(function() {
+        //   notificationEl.classList.remove('animate__backInDown');
+        //   notificationEl.classList.add('animate__backOutUp');
+          
+        //   setTimeout(function() {
+        //     notificationEl.classList.remove('animate__backOutUp');
+        //     notificationEl.classList.remove('animate__animated');
+        //     notificationEl.classList.add('d-none');
+
+        //     if(successOrError === 'success') {
+        //       notificationEl.classList.remove('success');
+        //     } else {
+        //       notificationEl.classList.remove('error');
+        //     }
+        //   }, 1000)
+        // }, 2000);
+      });
+    }
+
+    // dropdown custom function
+    const dropdownEl = document.querySelector('.dropdown-toggle');
+    const dropdownMenuEl = document.querySelector('.dropdown-menu');
+    
+    dropdownEl.addEventListener('click', () => {
+      if(dropdownMenuEl.classList.contains('show')) {
+        dropdownMenuEl.classList.remove('show')
+      } else {
+        dropdownMenuEl.classList.add('show')
+      }
+    })
+
+    const cartShoppingEl = document.querySelector('.cart-products');
+    const cartBadgeEl = document.querySelector('.cart-badge');
+    // if localstorage empty, put text, if not list the shopping lists
+    if (!localStorage.getItem('cart') || JSON.parse(localStorage.getItem('cart')).products.length == 0) {
+      cartShoppingEl.innerHTML = `<div class="empty"> Your cart is empty </div>`;
+    } else {
+      const cart = JSON.parse(localStorage.getItem('cart'));
+      updateShoppingCartHTML(cart);
+    }
+
+    // determine shopping cart element
+    
+
+    {{ if and (eq .Page.Section "products") (.IsPage) }}
+      // reset counter at 1, at page refresh
+      let counter = 1;
+      const quantityFields = document.querySelectorAll('.quantity');
+      quantityFields.forEach((quantityField) => {
+        quantityField.innerHTML = counter;
+      });
+
+      // separate animate shopping cart update function
+      function animateShoppingCart() {
+        cartBadgeEl.classList.add('animate__animated');
+        cartBadgeEl.classList.add('animate__bounce');
+        cartBadgeEl.addEventListener('animationend', () => {
+          cartBadgeEl.classList.remove('animate__animated');
+          cartBadgeEl.classList.remove('animate__bounce');
+        });
+      }
+      // increment quantity
+      const incrementButtons = document.querySelectorAll('.increment');
+      incrementButtons.forEach((incrementButton) => {
+        incrementButton.addEventListener('click', function () {
+          const buttonParent = this.parentNode;
+          let quantityChildInt = parseInt(buttonParent.querySelector('.quantity').innerText);
+          if(quantityChildInt < 10){
+            quantityChildInt ++;
+            buttonParent.querySelector( '.quantity' ).innerText = quantityChildInt;
+          }
+        });
+      });
+      // decrement quantity
+      const decrementButtons = document.querySelectorAll('.decrement');
+      decrementButtons.forEach((decrementButton) => {
+        decrementButton.addEventListener('click', function () {
+          const buttonParent = this.parentNode;
+          let quantityChildInt = parseInt(buttonParent.querySelector('.quantity').innerText);
+          if(quantityChildInt > 1){
+            quantityChildInt --;
+            buttonParent.querySelector( '.quantity' ).innerText = quantityChildInt;
+          }
+        });
+      });
+      // Storing cart array to local storage
+      function addToCart(product) {
+        // if local storage exists, push cart, if not, create new cart object. Either will add to local storage
+        if (localStorage && localStorage.getItem('cart')) {
+          const cart = JSON.parse(localStorage.getItem('cart'));
+          let index = -1;
+
+          // check if item exists, if so, update index to the array index value
+          cart.products.forEach((cartProduct, i) => {
+            if (cartProduct.title == product.title) {
+              index = i;
+            }
+          });
+
+          // if index is not -1, means item exists, do update
+          if (index !== -1) {
+            cart.products[index].quantity = product.quantity;
+          } else {
+            cart.products.push(product);
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          return updateShoppingCartHTML(cart);
+        } else {
+          const cart = {};
+          cart.products = [];
+
+          cart.products.push(product);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          return updateShoppingCartHTML(cart);
+        }
+      }
+
+      // create new cart object
+      const addToCartButtons = document.querySelectorAll('.add-to-cart');
+      addToCartButtons.forEach((addToCartButton) => {
+        addToCartButton.addEventListener('click', function () {
+          // determine quantity
+          const li = this.parentNode;
+          let quantity = li.querySelector('.quantity').innerText;
+          quantity = parseInt(quantity);
+
+          // create product object
+          const product = {};
+          product.title = {{ .Params.title }};
+          product.image = {{ range first 1 .Params.productImages }} {{ . }} {{ end }};
+          product.price = {{ cond (gt .Params.discountedPrice 0) .Params.discountedPrice .Params.originalPrice }};
+          product.url = {{ .Permalink }}
+          if (Number.isInteger(quantity)) {
+            product.quantity = quantity;
+          } else {
+            alert(`Quantity is not an integer`);
+            return;
+          }
+          addToCart(product);
+          animateShoppingCart();
+          updateNotification('Product added to cart!', 'success');
+        });
+      });
+    {{ end }}
+
+    // shopping cart update inside HTML
+    function updateShoppingCartHTML(cart) {
+      if(cart.products.length > 0) {
+        cartBadgeEl.classList.remove('d-none');
+        cartBadgeEl.innerHTML = cart.products.length;
+      }
+      cartShoppingEl.innerHTML = `<div class="title">Your Bag, ${cart.products.length} item(s)</div>`;
+      let totalPrice = 0;
+      cart.products.map((cartProduct) => {
+        totalPrice += cartProduct.price;
+        cartShoppingEl.innerHTML += `
+          <div class="cart-product">
+            <img class="image" src=${cartProduct.image}>
+            <div class="other-details">
+              <div class="title">
+                ${cartProduct.title}
+              </div>
+              <div class="price">
+                ${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(cartProduct.price)}
+              </div>
+              <div class="cart-quantity">
+                Qty: ${cartProduct.quantity}
+              </div>
+              <div class="trash">
+                <i class="far fa-trash-alt"></i>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      cartShoppingEl.innerHTML += `
+        <div class="total-price">
+          <div class="text">Sub-total: </div>
+          <div class="price">${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalPrice)}</div>
+        </div>
+        <a href=\"\/cart" class="view-cart">View Cart</a>
+        `
+      if(cart.products.length == 0) {
+        cartBadgeEl.classList.add('d-none');
+        cartShoppingEl.innerHTML = `<div class="empty"> Your cart is empty </div>`;
+      }
+    }
+
+    // have to wait cart update so the javascript can trace .trash class added
+    const cartDeleteEls = document.querySelectorAll('.trash');
+    // delete single cart from local storage array
+    function deleteSingleCart(product) {
+      if(localStorage.getItem('cart')) {
+        const productName = product.querySelector('.title').innerText;
+        const currentCart = JSON.parse(localStorage.getItem('cart'));
+        const filteredCarts = currentCart.products.filter(cartProduct => cartProduct.title !== productName);
+        // localStorage.clear();
+        const cart = {};
+        cart.products = [];
+        filteredCarts.map(cartProduct => {
+          cart.products.push(cartProduct);
+        });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        // delete filtered cart from HTML
+        updateShoppingCartHTML(cart);
+        updateNotification('Cart deleted', 'error');
+      }
+    }
+
+    // onclick delete function - event delegation
+    dropdownMenuEl.addEventListener('click', function(e) {
+      const target = e.target;
+      if(target.classList.value == 'far fa-trash-alt') {
+        // console.log(target.parentNode.parentNode.parentNode);
+        const cartProductEl = target.parentNode.parentNode.parentNode;
+        deleteSingleCart(cartProductEl);
+      }
+    })
+
+  });
+</script>

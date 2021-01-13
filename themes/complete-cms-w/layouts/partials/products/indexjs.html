@@ -1,0 +1,32 @@
+
+<script>
+document.addEventListener( 'DOMContentLoaded', function () {
+  // slider for product slideshow images
+  var secondarySlider = new Splide( '#secondary-slider', {
+    fixedWidth  : 120,
+    height      : 120,
+    gap         : 5,
+    cover       : true,
+    isNavigation: true,
+    loop: true,
+    breakpoints : {
+      '600': {
+        fixedWidth: 80,
+        height    : 80,
+      }
+    },
+  } ).mount();
+  
+  var primarySlider = new Splide( '#primary-slider', {
+    type       : 'fade',
+    heightRatio: 1,
+    pagination : false,
+    arrows     : false,
+    cover      : true,
+  } ); // do not call mount() here.
+  
+  primarySlider.sync( secondarySlider ).mount();
+
+  
+} );
+</script>

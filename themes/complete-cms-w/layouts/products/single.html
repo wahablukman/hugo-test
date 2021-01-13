@@ -45,29 +45,46 @@
         <div class="description">
           {{ .Content }}
         </div>
+        <div class="buy-and-cart">
+          <div class="cart-quantity">
+            <button class="btn btn-outline-secondary decrement"><i class="fas fa-minus"></i></button>
+            <div class="quantity"></div>
+            <button class="btn btn-outline-secondary increment"><i class="fas fa-plus"></i></button>
+          </div>
+          <button class="add-to-cart btn btn-primary link buy-button">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="text">Add to Cart</div>
+          </button>
+          <a class="whatsapp btn btn-primary link buy-button">
+            <!-- <img src="/images/3rdparty-logos/logoicon-whatsapp.svg" class="logo" alt=""> -->
+            <i class="fab fa-whatsapp"></i>
+            <div class="text">Buy / ask this product on WhatsApp</div>
+          </a>
+        </div>
+        <div class="store-links-title">Or shop this product on other stores: </div>
         <div class="store-links">
           {{ if not (eq .Params.tokpedURL "") }}
             <a class="link tokopedia btn btn-primary" href="{{ .Params.tokpedURL }}">
               <img src="/images/3rdparty-logos/logoicon-tokopedia.png" class="logo" alt="">
-              <div class="text">Shop this product on Tokopedia</div>
+              <div class="text">Tokopedia</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.shopeeURL "") }}
             <a class="link shopee btn btn-primary" href="{{ .Params.shopeeURL }}">
               <img src="/images/3rdparty-logos/logoicon-shopee.png" class="logo" alt="">
-              <div class="text">Shop this product on Shopee</div>
+              <div class="text">Shopee</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.bukalapakURL "") }}
             <a class="link bukalapak btn btn-primary" href="{{ .Params.bukalapakURL }}">
               <img src="/images/3rdparty-logos/logoicon-bukalapak.png" class="logo" alt="">
-              <div class="text">Shop this product on Bukalapak</div>
+              <div class="text">Bukalapak</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.olxURL "") }}
             <a class="link olx btn btn-primary" href="{{ .Params.olxURL }}">
               <img src="/images/3rdparty-logos/logoicon-olx.png" class="logo" alt="">
-              <div class="text">Shop this product on OLX</div>
+              <div class="text">OLX</div>
             </a>
           {{ end }}
         </div>
@@ -78,33 +95,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
-<script>
-  document.addEventListener( 'DOMContentLoaded', function () {
-    var secondarySlider = new Splide( '#secondary-slider', {
-      fixedWidth  : 120,
-      height      : 120,
-      gap         : 5,
-      cover       : true,
-      isNavigation: true,
-      loop: true,
-      breakpoints : {
-        '600': {
-          fixedWidth: 80,
-          height    : 80,
-        }
-      },
-    } ).mount();
-    
-    var primarySlider = new Splide( '#primary-slider', {
-      type       : 'fade',
-      heightRatio: 1,
-      pagination : false,
-      arrows     : false,
-      cover      : true,
-    } ); // do not call mount() here.
-    
-    primarySlider.sync( secondarySlider ).mount();
-  } );
-</script>
+{{ partial "products/indexjs.html" . | safeHTML }}
 
 {{ end }}
