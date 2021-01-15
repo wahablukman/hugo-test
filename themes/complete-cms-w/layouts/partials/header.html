@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="navbar-brand" href="/">
       <img src="{{ .Site.Params.logo }}" alt="">
@@ -20,16 +20,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/contact-us">Contact Us</a>
         </li>
-        <li class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button">
-            <i class="fas fa-shopping-cart"></i> Cart <span class="cart-badge badge d-none bg-danger"></span>
-          </button>
-          <div class="dropdown-menu">
-            <div class="cart-products">
+        {{ if not (eq .Page.Title "Shopping Cart") }}
+          <li class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button">
+              <i class="fas fa-shopping-cart"></i> Cart <span class="cart-badge badge d-none bg-danger"></span>
+            </button>
+            <div class="dropdown-menu">
+              <div class="cart-products">
 
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        {{ end }}
       </ul>
     </div>
   </div>
@@ -219,11 +221,11 @@
           <div class="cart-product">
             <img class="image" src=${cartProduct.image}>
             <div class="other-details">
-              <div class="title">
+              <a href=\"${cartProduct.url}" class="title">
                 ${cartProduct.title}
-              </div>
+              </a>
               <div class="price">
-                ${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(cartProduct.price)}
+                ${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(cartProduct.price)}
               </div>
               <div class="cart-quantity">
                 Qty: ${cartProduct.quantity}
@@ -238,7 +240,7 @@
       cartShoppingEl.innerHTML += `
         <div class="total-price">
           <div class="text">Sub-total: </div>
-          <div class="price">${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalPrice)}</div>
+          <div class="price">${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalPrice)}</div>
         </div>
         <a href=\"\/cart" class="view-cart">View Cart</a>
         `

@@ -51,11 +51,11 @@
             <div class="quantity"></div>
             <button class="btn btn-outline-secondary increment"><i class="fas fa-plus"></i></button>
           </div>
-          <button class="add-to-cart btn btn-primary link buy-button">
+          <button class="add-to-cart btn btn-primary link buy-button with-icon">
             <i class="fas fa-shopping-cart"></i>
             <div class="text">Add to Cart</div>
           </button>
-          <a class="whatsapp btn btn-primary link buy-button">
+          <a class="whatsapp btn btn-primary link buy-button with-icon">
             <!-- <img src="/images/3rdparty-logos/logoicon-whatsapp.svg" class="logo" alt=""> -->
             <i class="fab fa-whatsapp"></i>
             <div class="text">Buy / ask this product on WhatsApp</div>
@@ -64,25 +64,25 @@
         <div class="store-links-title">Or shop this product on other stores: </div>
         <div class="store-links">
           {{ if not (eq .Params.tokpedURL "") }}
-            <a class="link tokopedia btn btn-primary" href="{{ .Params.tokpedURL }}">
+            <a class="link small-link tokopedia btn btn-primary with-icon" href="{{ .Params.tokpedURL }}">
               <img src="/images/3rdparty-logos/logoicon-tokopedia.png" class="logo" alt="">
               <div class="text">Tokopedia</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.shopeeURL "") }}
-            <a class="link shopee btn btn-primary" href="{{ .Params.shopeeURL }}">
+            <a class="link small-link shopee btn btn-primary with-icon" href="{{ .Params.shopeeURL }}">
               <img src="/images/3rdparty-logos/logoicon-shopee.png" class="logo" alt="">
               <div class="text">Shopee</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.bukalapakURL "") }}
-            <a class="link bukalapak btn btn-primary" href="{{ .Params.bukalapakURL }}">
+            <a class="link small-link bukalapak btn btn-primary with-icon" href="{{ .Params.bukalapakURL }}">
               <img src="/images/3rdparty-logos/logoicon-bukalapak.png" class="logo" alt="">
               <div class="text">Bukalapak</div>
             </a>
           {{ end }}
           {{ if not (eq .Params.olxURL "") }}
-            <a class="link olx btn btn-primary" href="{{ .Params.olxURL }}">
+            <a class="link small-link olx btn btn-primary with-icon" href="{{ .Params.olxURL }}">
               <img src="/images/3rdparty-logos/logoicon-olx.png" class="logo" alt="">
               <div class="text">OLX</div>
             </a>

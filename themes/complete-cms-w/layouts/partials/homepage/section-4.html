@@ -5,8 +5,8 @@
       <div class="about">
         {{ with .Site.GetPage "/about" }}{{ .Content }}{{ end }}
       </div> -->
-      {{ range where .Site.RegularPages "Section" "products" }}
-        <div class="col-md-4 card-wrapper product">
+      {{ range first 4 (where .Site.RegularPages "Section" "products") }}
+        <div class="col-md-3 card-wrapper product">
           {{ partial "products/single-product-card.html" . }}
         </div>
       {{ end }}
