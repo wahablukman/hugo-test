@@ -14,6 +14,9 @@ $boxShadowCard: 1px 1px 1px 1px rgba(0, 0, 0, 1), 1px 1px 1px 1px rgba(0, 0, 0, 
 $borderRadiusCard: 4px;
 $discountedColor: red;
 $dividerColor: rgba(0,0,0,0.15);
+$whatsappColor: linear-gradient( 135deg, #28C76F 20%, #81FBB8 100%);;
+$successNotifColor: lightseagreen;
+$errorNotifColor: red;
 
 body {
   img {
@@ -25,13 +28,48 @@ body {
   color: $fontMainColor;
   -webkit-font-smoothing: antialiased;
   // background-color: rgba(228, 247, 255, 0.2);
-  background-color: #f6f6f6;
+  background-color: #f8f8f8;
+}
+
+.dropdown-menu {
+  padding: 0;
+  min-width: unset;
+  width: 500px;
+  left: unset;
+  right: 0;
 }
 
 footer {
   color: white;
   background-color: $fontTitleColor;
   padding: 60px 0;
+}
+
+div#notification {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  z-index: 4;
+  text-align: center;
+  width: 100%;
+  &.success {
+    .text {
+      background-color: $successNotifColor;
+    }
+  }
+  &.error {
+    .text {
+      background-color: $errorNotifColor;
+    }
+  }
+  .text {
+    padding: 15px 40px;
+    font-family: $fontTitle;
+    color: white;
+    box-shadow: $boxShadowButton;
+    border-radius: $borderRadiusCard;
+    display: inline;
+  }
 }
 
 .navbar {
@@ -61,6 +99,11 @@ footer {
       }
     }
   }
+}
+
+.empty {
+  padding: 100px;
+  text-align: center;
 }
 
 .list-page, .single-page {
@@ -104,7 +147,7 @@ footer {
         color: $fontMainColor;
       }
       .btn {
-        background-color: transparent;
+        background: transparent;
         color: $fontTitleColor;
         box-shadow: none;
         position: relative;
@@ -215,6 +258,50 @@ footer {
       }
     }
   }
+  &.testimonial {
+    padding: 0 10px;
+    opacity: 0.3;
+    &.is-visible {
+      opacity: 1;
+    }
+    .card {
+      background-color: rgba(255, 255, 255, 1);
+      cursor: pointer;
+      text-align: center;
+      padding-bottom: 30px;
+      border-radius: 0;
+      border: 0px solid;
+      .avatar {
+        padding: 40px;
+        text-align: center;
+        img {
+          width: 100%;
+          height: 100px;
+          width: 100px;
+          object-fit: cover;
+          object-position: top;
+          border-radius: 100%;
+        }
+      }
+      .name, .fas, .testimony {
+        padding: 0 80px;
+      }
+      .name {
+        font-size: $fontBiggerSize;
+        font-family: $fontTitle;
+        font-weight: 800;
+        margin-bottom: 5px;
+      }
+      .fas {
+        margin-bottom: 5px;
+        font-size: $fontBiggerSize;
+        opacity: 0.1;
+      }
+      .testimony {
+        font-weight: 300;
+      }
+    }
+  }
 }
 
 .card {
@@ -266,6 +353,7 @@ footer {
   letter-spacing: 1.05px;
   box-shadow: $boxShadowButton;
   border: 0px solid;
+  transition: all .3s;
   &.with-icon {
     display: flex;
     flex-direction: row;
@@ -279,8 +367,19 @@ footer {
       margin-right: 8px;
     }
   }
+  &.btn-primary {
+    background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
+  }
+  &.btn-secondary {
+    background-image: linear-gradient( 135deg, #FEB692 10%, #EA5455 100%);
+  }
   &.whatsapp {
-    background-color: rgb(19, 226, 122);
+    background: $whatsappColor;
+  }
+  &:hover {
+    // opacity: 0.5;
+    transform: scale(1.02);
+    transition: all .3s;
   }
 }
 
@@ -295,8 +394,31 @@ h1.title {
 section {
   padding: 100px 0;
   &.products {
-    padding: 0;
+    padding: 0 0 100px;
     margin-top: -160px;
+  }
+  &.testimonials {
+    // background: #000428;  /* fallback for old browsers */
+    background-color: $fontTitleColor;
+    position: relative;
+    h1.title {
+      text-align: right;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.7);
+    }
+    .container {
+      max-width: 95%;
+    }
+    .splide__pagination {
+      display: none;
+    }
   }
 }
 
@@ -341,6 +463,7 @@ section {
 }
 
 .single-page {
+  font-size: $fontBiggerSize;
   &.blogpost {
     h1.title, .content .paragraph, .date-and-author, .content .tags, .disqus-comments, .latest-news, .sub-title {
       padding: 0 150px;
@@ -427,13 +550,109 @@ section {
         display: flex;
         flex-direction: row;
         .link {
-          background-color: transparent;
+          background: transparent;
           border: 1px solid rgba(0, 0, 0, 0.1);
           margin: 0 3px;
           margin-bottom: 3px;
           color: $fontTitleColor;
+          box-shadow: none;
         }
       }
+    }
+  }
+}
+
+.cart-products, .page-cart-products {
+  font-size: $fontBiggerSize;
+  >.title, .total-price, .view-cart {
+    padding: 15px 25px;
+    background-color: #f6f6f6;
+  }
+  .cart-product {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    img.image {
+      height: 100px;
+      width: 100px;
+      object-fit: contain;
+      object-position: top;
+    }
+    .other-details {
+      font-size: $fontSmallerSize;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 0 15px;
+      .title {
+        font-weight: 400;
+        font-family: $fontTitle;
+        color: $fontTitleColor;
+      }
+      .price {
+        font-weight: 800;
+        color: $fontTitleColor;
+      }
+      .trash {
+        cursor: pointer;
+        margin-left: auto;
+      }
+    }
+  }
+  .total-price {
+    display: flex;
+    flex-direction: row;
+    .price {
+      align-self: flex-end;
+      margin-left: auto;
+    }
+  }
+  .cart-quantity {
+    font-style: italic;
+  }
+  .view-cart {
+    width: 100%;
+    color: white;
+    font-style: unset;
+    text-decoration: unset;
+    background: $fontTitleColor;
+    border-radius: 0;
+  }
+}
+
+.page-cart-products {
+  display: flex;
+  flex-direction: column;
+  flex: unset;
+  >.title, .total-price, .view-cart {
+    background-color: black;
+    color: white;
+  }
+  .cart-product {
+    background-color: white;
+    img.image {
+      width: 200px;
+      height: 200px;
+    }
+    .other-details {
+      font-size: $fontNormalSize;
+    }
+  }
+  .view-cart {
+    display: none;
+  }
+}
+
+.buy-button-wrapper{ 
+  margin-top: 20px;
+  display: flex;
+  max-width: 100%;
+  .btn {
+    width: auto;
+    margin-left: auto;
+    &.whatsapp {
+      background-color: $whatsappColor;
     }
   }
 }

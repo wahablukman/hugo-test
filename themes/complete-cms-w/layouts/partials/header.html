@@ -50,7 +50,7 @@
       }
       notificationEl.classList.add('animate__animated');
       notificationEl.classList.add('animate__backInDown');
-      // notificationEl.children.innerText = text;
+      notificationEl.querySelector('.text').innerText = text;
       notificationEl.addEventListener('animationend', () => {
         setTimeout(() => {
           notificationEl.classList.remove('animate__animated');
@@ -81,20 +81,29 @@
       });
     }
 
-    // dropdown custom function
-    const dropdownEl = document.querySelector('.dropdown-toggle');
-    const dropdownMenuEl = document.querySelector('.dropdown-menu');
-    
-    dropdownEl.addEventListener('click', () => {
-      if(dropdownMenuEl.classList.contains('show')) {
-        dropdownMenuEl.classList.remove('show')
-      } else {
-        dropdownMenuEl.classList.add('show')
-      }
-    })
+    {{ if not (eq .Page.Title "Shopping Cart") }}
 
-    const cartShoppingEl = document.querySelector('.cart-products');
-    const cartBadgeEl = document.querySelector('.cart-badge');
+      // dropdown custom function
+      const dropdownEl = document.querySelector('.dropdown-toggle');
+      const dropdownMenuEl = document.querySelector('.dropdown-menu');
+      
+      dropdownEl.addEventListener('click', () => {
+        if(dropdownMenuEl.classList.contains('show')) {
+          dropdownMenuEl.classList.remove('show')
+        } else {
+          dropdownMenuEl.classList.add('show')
+        }
+      })
+
+    {{ end }}
+    
+    {{ if not (eq .Page.Title "Shopping Cart") }}
+      const cartShoppingEl = document.querySelector('.cart-products');
+      const cartBadgeEl = document.querySelector('.cart-badge');
+    {{ else }}
+      const cartShoppingEl = document.querySelector('.page-cart-products');
+    {{ end }}
+    
     // if localstorage empty, put text, if not list the shopping lists
     if (!localStorage.getItem('cart') || JSON.parse(localStorage.getItem('cart')).products.length == 0) {
       cartShoppingEl.innerHTML = `<div class="empty"> Your cart is empty </div>`;
@@ -209,10 +218,14 @@
 
     // shopping cart update inside HTML
     function updateShoppingCartHTML(cart) {
-      if(cart.products.length > 0) {
-        cartBadgeEl.classList.remove('d-none');
-        cartBadgeEl.innerHTML = cart.products.length;
-      }
+      {{ if not (eq .Page.Title "Shopping Cart") }}
+        if(cart.products.length > 0) {
+          {{ if not (eq .Page.Title "Shopping Cart") }}
+            cartBadgeEl.classList.remove('d-none');
+          {{ end }}
+          cartBadgeEl.innerHTML = cart.products.length;
+        }
+      {{ end }}
       cartShoppingEl.innerHTML = `<div class="title">Your Bag, ${cart.products.length} item(s)</div>`;
       let totalPrice = 0;
       cart.products.map((cartProduct) => {
@@ -242,7 +255,7 @@
           <div class="text">Sub-total: </div>
           <div class="price">${Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(totalPrice)}</div>
         </div>
-        <a href=\"\/cart" class="view-cart">View Cart</a>
+        <a href=\"\/cart" class="view-cart btn btn-primary">View Cart</a>
         `
       if(cart.products.length == 0) {
         cartBadgeEl.classList.add('d-none');
@@ -267,19 +280,30 @@
         localStorage.setItem('cart', JSON.stringify(cart));
         // delete filtered cart from HTML
         updateShoppingCartHTML(cart);
-        updateNotification('Cart deleted', 'error');
+        updateNotification('Cart deleted', 'success');
       }
     }
 
-    // onclick delete function - event delegation
-    dropdownMenuEl.addEventListener('click', function(e) {
-      const target = e.target;
-      if(target.classList.value == 'far fa-trash-alt') {
-        // console.log(target.parentNode.parentNode.parentNode);
-        const cartProductEl = target.parentNode.parentNode.parentNode;
-        deleteSingleCart(cartProductEl);
-      }
-    })
+    {{ if not (eq .Page.Title "Shopping Cart") }}
+      // onclick delete function - event delegation
+      dropdownMenuEl.addEventListener('click', function(e) {
+        const target = e.target;
+        if(target.classList.value == 'far fa-trash-alt') {
+          // console.log(target.parentNode.parentNode.parentNode);
+          const cartProductEl = target.parentNode.parentNode.parentNode;
+          deleteSingleCart(cartProductEl);
+        }
+      })
+    {{ else }}
+      cartShoppingEl.addEventListener('click', function(e) {
+        const target = e.target;
+        if(target.classList.value == 'far fa-trash-alt') {
+          // console.log(target.parentNode.parentNode.parentNode);
+          const cartProductEl = target.parentNode.parentNode.parentNode;
+          deleteSingleCart(cartProductEl);
+        }
+      })
+    {{ end }}
 
   });
 </script>
