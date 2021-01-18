@@ -3,15 +3,15 @@
 <div class="blogs list-page">
   <div class="container">
     <div class="row">
-      <!-- <div class="col-md-2 tags-list">
+      <div class="col-md-2 categories-tags-list">
+        <h1 class="sub-title col-md-12">Categories: </h1>
         {{ range .Site.Taxonomies.tags }}
-          <div><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</div>
+          <div class="category-tag"><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></div>
         {{ end }}
-      </div> -->
-      <div class="col-md-12 container">
+      </div>
+      <div class="col-md-10 container">
         <div class="row">
-          <h1 class="title col-md-12">Latest News & Issues</h1>
-          {{ range (.Paginator 6).Pages }}
+          {{ range (.Paginator 9).Pages }}
             <div class="col-md-4 card-wrapper blog">
               {{ partial "blogs/single-blog-card.html" . }}
             </div>

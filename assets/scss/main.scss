@@ -28,7 +28,7 @@ body {
   color: $fontMainColor;
   -webkit-font-smoothing: antialiased;
   // background-color: rgba(228, 247, 255, 0.2);
-  background-color: #f8f8f8;
+  background-color: #fff;
 }
 
 .dropdown-menu {
@@ -86,16 +86,34 @@ div#notification {
     justify-content: center;
     align-items: center;
     .nav-item {
-      margin: 0 10px;
+      margin: 0 14px;
       &:last-of-type {
         margin-right: 0;
+      }
+      &.active {
+        opacity: 1;
+        .nav-link {
+          font-weight: 900;
+          position: relative;
+          color: $fontMainColor;
+          &::before {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: $fontMainColor;
+            width: 100%;
+          }
+        }
       }
       .nav-link {
         font-weight: 300;
         color: $fontTitleColor;
         font-size: $fontSmallerSize;
+        padding: 0;
         letter-spacing: 1.2px;
-        text-transform: uppercase;
+        // text-transform: uppercase;
       }
     }
   }
@@ -145,6 +163,7 @@ div#notification {
         justify-content: flex-end;
         margin-bottom: 15px;
         color: $fontMainColor;
+        flex: 0;
       }
       .btn {
         background: transparent;
@@ -391,6 +410,15 @@ h1.title {
   margin-bottom: 50px;
 }
 
+h1.sub-title {
+  font-size: $fontBiggerSize;
+  opacity: 0.8;
+  font-family: $fontTitle;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
 section {
   padding: 100px 0;
   &.products {
@@ -464,6 +492,12 @@ section {
 
 .single-page {
   font-size: $fontBiggerSize;
+  p {
+    margin-bottom: 2rem;
+  }
+  .content, .description {
+    font-weight: 300;
+  }
   &.blogpost {
     h1.title, .content .paragraph, .date-and-author, .content .tags, .disqus-comments, .latest-news, .sub-title {
       padding: 0 150px;
@@ -625,6 +659,9 @@ section {
   display: flex;
   flex-direction: column;
   flex: unset;
+  .title {
+    display: none;
+  }
   >.title, .total-price, .view-cart {
     background-color: black;
     color: white;
@@ -653,6 +690,52 @@ section {
     margin-left: auto;
     &.whatsapp {
       background-color: $whatsappColor;
+    }
+  }
+}
+
+.categories-tags-list {
+  .category-tag {
+    margin: 2px 0;
+    a {
+      text-decoration: none;
+      font-style: none;
+      text-transform: capitalize;
+      color: $fontMainColor;
+      position: relative;
+      transition: all .3s;
+      font-size: $fontSmallerSize;
+      font-weight: 400;
+      font-family: $fontTitle;
+      &:hover {
+        font-weight: 700;
+        padding-left: 14px;
+        transition: all .3s;
+        &:before {
+          content: ' ';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 4px;
+          width: 4px;
+          border-radius: 8px;
+          background: $fontMainColor;
+        }
+      }
+    }
+  }
+}
+
+.custom-pagination {
+  .pagination {
+    .page-item {
+      &.active {
+        .page-link {
+          border-color: $fontMainColor;
+          background: $fontMainColor;
+        }
+      }
     }
   }
 }
