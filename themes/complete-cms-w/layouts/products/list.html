@@ -2,10 +2,8 @@
 
 <div class="products list-page">
   <div class="container">
+    <h1 class="title">Store Products</h1>
     <div class="row">
-      <div class="col-md-12">
-        <h1 class="title">Store Products</h1>
-      </div>
       {{ range (.Paginator 12).Pages }}
         <div class="col-md-3 card-wrapper product">
           {{ partial "products/single-product-card.html" . }}

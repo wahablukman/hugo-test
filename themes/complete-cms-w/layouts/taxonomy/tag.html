@@ -1,14 +1,27 @@
 {{ define "main" }}
 
-<div class="tags list-page">
+<div class="blogs list-page">
   <div class="container">
+    <h1 class="title">Articles</h1>
     <div class="row">
-      <h1 class="title">Tag: {{ .Title }} {{ .Params.count }} </h1>
-      {{ range .Data.Pages }}
-        <div class="col-md-4 card-wrapper blog">
-          {{ partial "blogs/single-blog-card.html" . }}
+
+      <div class="col-md-2 categories-tags-list">
+        <h1 class="sub-title col-md-12">Categories:</h1>
+        {{ range .Site.Taxonomies.tags }}
+          <div class='category-tag {{ cond (eq $.Title .Page.Title) "active" "" }} '><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></div>
+        {{ end }}
+      </div>
+
+      <div class="col md-10 container">
+        <div class="row">
+          {{ range .Data.Pages }}
+            <div class="col-md-4 card-wrapper blog">
+              {{ partial "blogs/single-blog-card.html" . }}
+            </div>
+          {{ end }}
         </div>
-      {{ end }}
+      </div>
+
     </div>
   </div>
   <!-- {{ range .Site.Taxonomies.tags }}

@@ -77,6 +77,9 @@ div#notification {
   box-shadow: $boxShadow;
   z-index: 3;
   background-color: white;
+  .navbar-toggler {
+    padding: 0;
+  }
   .navbar-brand {
     width: 50px;
   }
@@ -86,9 +89,9 @@ div#notification {
     justify-content: center;
     align-items: center;
     .nav-item {
-      margin: 0 14px;
       &:last-of-type {
         margin-right: 0;
+        margin-left: 20px;
       }
       &.active {
         opacity: 1;
@@ -96,23 +99,29 @@ div#notification {
           font-weight: 900;
           position: relative;
           color: $fontMainColor;
-          &::before {
-            content: ' ';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 2px;
-            background: $fontMainColor;
-            width: 100%;
-          }
+          font-weight: 500;
+          position: relative;
+          color: #fff;
+          background-color: $fontMainColor;
+          border-radius: 2.5px;
+          // &::before {
+          //   content: ' ';
+          //   position: absolute;
+          //   bottom: 0;
+          //   left: 0;
+          //   height: 2px;
+          //   background: $fontMainColor;
+          //   width: 100%;
+          // }
         }
       }
       .nav-link {
         font-weight: 300;
+        padding: 3px 12px;
         color: $fontTitleColor;
         font-size: $fontSmallerSize;
-        padding: 0;
         letter-spacing: 1.2px;
+        margin: 0 3px;
         // text-transform: uppercase;
       }
     }
@@ -134,6 +143,7 @@ div#notification {
     .card {
       .featured-image {
         height: 200px;
+        width: 100%;
         margin-bottom: 20px;
         padding: 0;
         img {
@@ -404,7 +414,7 @@ div#notification {
 
 h1.title {
   font-size: $fontHugeSize;
-  opacity: 0.1;
+  opacity: 0.2;
   font-family: $fontTitle;
   font-weight: 900;
   margin-bottom: 50px;
@@ -417,12 +427,13 @@ h1.sub-title {
   font-weight: 900;
   margin-bottom: 20px;
   text-decoration: underline;
+  width: 100%;
 }
 
 section {
   padding: 100px 0;
   &.products {
-    padding: 0 0 100px;
+    padding-top: 0;
     margin-top: -160px;
   }
   &.testimonials {
@@ -476,7 +487,9 @@ section {
       z-index: 1;
     }
     .left-section {
-      padding: 60px 80px 0 320px;
+      padding: 60px 80px 0 0px;
+      margin-left: auto;
+      width: 650px;
       h1 {
         font-size: $fontHugeSize;
         font-family: $fontTitle;
@@ -577,7 +590,7 @@ section {
           }
         }
         >.btn {
-          margin: 0 3px; 
+          margin: 3px; 
         }
       }
       .store-links {
@@ -697,6 +710,24 @@ section {
 .categories-tags-list {
   .category-tag {
     margin: 2px 0;
+    &.active {
+      a {
+        font-weight: 700;
+        padding-left: 14px;
+        transition: all .3s;
+        &:before {
+          content: ' ';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 4px;
+          width: 4px;
+          border-radius: 8px;
+          background: $fontMainColor;
+        }
+      }
+    }
     a {
       text-decoration: none;
       font-style: none;
@@ -738,4 +769,259 @@ section {
       }
     }
   }
+}
+
+@media(max-width: 1400px) {
+  #landing-area {
+    .content-2 {
+      .left-section {
+        width: 565px;
+      }
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  #landing-area {
+    .content-2 {
+      flex-direction: column-reverse;
+      .left-section, .right-section {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+      .right-section {
+        width: 70%;
+      }
+    }
+  }
+  .single-page {
+    &.product {
+      font-size: $fontNormalSize;
+      .description {
+        p {
+          font-size: $fontNormalSize;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 992px) {
+  .single-page {
+    &.blogpost {
+      h1.title, .content .paragraph, .date-and-author, .content .tags, .disqus-comments, .latest-news, .sub-title {
+        padding: 0;
+      }
+      h1.title {
+        text-align: center;
+      }
+      .sub-title {
+        padding: 0 10px;
+      }
+      .date-and-author {
+        font-size: $fontSmallerSize;
+        flex-direction: column;
+      }
+      .fas {
+        display: none;
+      }
+      .content {
+        font-size: $fontNormalSize;
+      }
+      .latest-news {
+        .row {
+          margin:0;
+        }
+      }
+    }
+  }
+
+  .list-page, .single-page {
+    padding: 70px 0;
+  }
+
+  h1.title {
+    margin-bottom: 30px;
+  }
+  
+  .navbar {
+    .navbar-nav {
+      .nav-item {
+        &.dropdown {
+          margin-left: 0;
+          margin-top: 10px;
+          text-align: center;
+        }
+      }
+    }
+    
+  }
+  .card-wrapper {
+    &.product, &.blog {
+      width: 50%;
+    }
+    &.product {
+      padding: 0 5px 5px 5px;
+      &:nth-of-type(even) {
+        padding-left: 2.5px;
+      }
+      &:nth-of-type(odd) {
+        padding-right: 2.5px;
+      }
+      .card {
+        .featured-image {
+          width: 60%;
+          padding-top:60%;
+          text-align: center;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .list-page {
+    .categories-tags-list {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+      justify-content: center;
+      .category-tag {
+        &:first-of-type {
+          margin-left: 0;
+        }
+        &:last-of-type {
+          margin-right: 0;
+        }
+        margin:0 10px;
+        &.active {
+          a {
+            padding-left: 0px;
+            &:before {
+              display: none;
+            }
+          }
+        }
+        a {
+          &:hover {
+            padding-left: 0px;
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .blogs {
+    >.container {
+      >.row {
+        >.container {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 550px) {
+  section {
+    padding: 50px 0;
+  }
+  .btn {
+    font-size: $fontSmallerSize;
+  }
+  .dropdown-menu {
+    width: 100%;
+  }
+  .list-page, .single-page {
+    padding: 30px 0;
+  }
+  h1.title {
+    font-size: $fontBigSize;
+  }
+  .list-page {
+    h1.sub-title, h1.title {
+      text-align: center;
+    }
+    h1.sub-title {
+      font-size: $fontNormalSize;
+    }
+  }
+  .navbar {
+    width: 100%;
+    position: relative;
+    /* Status bar height on iOS 10 */
+    // padding-top: 20px;
+
+    /* Status bar height on iOS 11+ */
+    // padding-top: env(safe-area-inset-top);
+    .navbar-brand {
+      position: absolute;
+      width: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      top:5px;
+    }
+    .navbar-toggler {
+      margin-left: auto;
+    }
+    .navbar-collapse {
+      margin-top: 20px;
+    }
+  }
+  #landing-area {
+    .content-2 {
+      flex-direction: column-reverse;
+      padding: 40px 0 200px;
+      .left-section, .right-section {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .left-section {
+        padding-top: 20px;
+        h1 {
+          font-size: $fontBigSize;
+        }
+      }
+      .right-section {
+        width: 90%;
+      }
+    }
+  }
+  .card-wrapper {
+    &.product {
+      .card {
+        .featured-image {
+          width: 100%;
+          padding-top: 100%;
+        }
+        .other-details {
+          .price-and-title {
+            .prices {
+              .original-price, .discounted-price {
+                font-size: $fontSmallSize;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.blog {
+      width: 100%;
+    }
+    &.testimonial {
+      .card {
+        .testimony, .name, .fas {
+          padding: 0 10px;
+        }
+      }
+    }
+  }
+  
 }
