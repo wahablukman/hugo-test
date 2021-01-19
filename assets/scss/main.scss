@@ -1,5 +1,5 @@
 $fontTitle: 'Montserrat', Helvetica, sans-serif;
-$fontBody: 'Roboto', Helvetica, sans-serif;
+$fontBody: 'Merriweather', serif;
 $fontMainColor: #4f5464;
 $fontTitleColor: #172940;
 $fontHugeSize: 2.8rem;
@@ -173,7 +173,7 @@ div#notification {
         justify-content: flex-end;
         margin-bottom: 15px;
         color: $fontMainColor;
-        flex: 0;
+        flex: 0 auto;
       }
       .btn {
         background: transparent;
@@ -557,6 +557,7 @@ section {
     }
   }
   &.product {
+    font-size: $fontNormalSize;
     .other-details {
       .title {
         font-family: $fontTitle;
@@ -795,16 +796,6 @@ section {
       }
     }
   }
-  .single-page {
-    &.product {
-      font-size: $fontNormalSize;
-      .description {
-        p {
-          font-size: $fontNormalSize;
-        }
-      }
-    }
-  }
 }
 
 @media(max-width: 992px) {
@@ -930,6 +921,9 @@ section {
 @media(max-width: 550px) {
   section {
     padding: 50px 0;
+  }
+  .single-page {
+    font-size: $fontNormalSize;
   }
   .btn {
     font-size: $fontSmallerSize;
