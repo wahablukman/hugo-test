@@ -1,5 +1,5 @@
 ---
-title: "Limited Edition Tee"
+title: "Limited like Edition Tee"
 date: 2021-01-05T09:23:43+07:00
 draft: false
 originalPrice: 350000

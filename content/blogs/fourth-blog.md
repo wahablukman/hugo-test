@@ -1,5 +1,5 @@
 ---
-title: "How to start using music notes"
+title: "How to start like using music notes"
 date: 2020-12-30T09:31:10+07:00
 draft: false
 featuredImage: "/images/image-4.png"

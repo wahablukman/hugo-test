@@ -1,5 +1,5 @@
 ---
-title: "Regular Tee"
+title: "Regular like Tee"
 date: 2021-01-05T08:30:17+07:00
 draft: false
 originalPrice: 200000

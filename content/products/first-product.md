@@ -1,5 +1,5 @@
 ---
-title: "T-Shirt Cool 1"
+title: "T-Shirt like Cool 1"
 date: 2020-12-18T14:53:49+07:00
 draft: false
 originalPrice: 125000

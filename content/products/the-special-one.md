@@ -1,5 +1,5 @@
 ---
-title: "The Special One"
+title: "The Special how One"
 date: 2021-01-05T09:39:48+07:00
 draft: false
 originalPrice: 90000

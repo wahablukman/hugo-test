@@ -16,3 +16,11 @@ disqusShortname = "http-localhost-1313-11"
   tag = "tags"
   category = "categories"
   color = "colors"
+
+[outputFormats]
+  [outputFormats.SearchIndex]
+    baseName = "search"
+    mediaType = "application/json"
+
+[outputs]
+  home = ["HTML", "SearchIndex"]
