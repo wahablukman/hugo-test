@@ -24,5 +24,5 @@
   <!-- FavIcon -->
   <link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
   
-  <title>{{ .Site.Params.ownerName }} - {{ humanize .Title }}</title>
+  <title>{{ .Site.Params.ownerName }} | {{ .Title | humanize }}</title>
 </head>

@@ -121,10 +121,12 @@ div#notification {
   top: 0;
   left: 0;
   width: 100%;
-  .navbar-toggler:focus {
-    text-decoration: none;
-    outline: 0;
-    box-shadow: 0 0 0 0rem;
+  .navbar-toggler {
+    &:focus {
+      text-decoration: none;
+      outline: 0;
+      box-shadow: 0 0 0 0rem;
+    }
   }
   .container {
     .nav-container-item {
