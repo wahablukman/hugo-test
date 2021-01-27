@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="nav-container-item navbar-brand" href="/">
-      <img src="{{ .Site.Params.logo }}" alt="">
+      {{ with .GetPage "/settings" }}
+        <img src="{{ .Params.logo }}" alt="">
+      {{ end }}
     </a>
     <div class="nav-container-item cart-and-search">
       {{ if not (eq .Page.Title "Shopping Cart") }}

@@ -21,8 +21,9 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ $mainSCSS.RelPermalink }}">
-  <!-- FavIcon -->
-  <link rel="shortcut icon" href="{{ .Site.Params.favicon }}" type="image/x-icon">
-  
-  <title>{{ .Site.Params.ownerName }} | {{ .Title | humanize }}</title>
+  {{ with .GetPage "/settings" }}
+    <!-- FavIcon -->
+    <link rel="shortcut icon" href="{{ .Params.favicon }}" type="image/x-icon">
+    <title> {{ .Params.name }}  | {{ $.Title | humanize }}</title>
+  {{ end }}
 </head>
