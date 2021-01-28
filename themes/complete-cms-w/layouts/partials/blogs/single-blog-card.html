@@ -2,7 +2,7 @@
   <div class="featured-image">
     {{ $featuredImage := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.featuredImage ) }}
     {{ $resizedFeaturedImage := $featuredImage.Resize "390x" }}
-    <img src='{{ $resizedFeaturedImage.RelPermalink }}' alt="">
+    <img src='{{ $resizedFeaturedImage.RelPermalink }}' alt="" loading="lazy">
   </div>
   <div class="title">{{ .Params.title | truncate 25 }}</div>
   <div class="paragraph">

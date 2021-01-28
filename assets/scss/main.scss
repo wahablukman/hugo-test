@@ -88,11 +88,11 @@ footer {
 div#notification {
   position: fixed;
   top: 30px;
-  left: 45%;
+  left: 0;
   margin: 0 auto;
   z-index: 4;
   text-align: center;
-  width: auto;
+  width: 100%;
   &.success {
     .text {
       background-color: $successNotifColor;
