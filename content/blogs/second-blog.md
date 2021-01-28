@@ -2,7 +2,7 @@
 title: "Second When Blog"
 date: 2020-12-18T14:54:02+07:00
 draft: false
-featuredImage: "/images/image-2.jpg"
+featuredImage: "/uploads/image-2.jpg"
 tags: 
   - world
   - politics

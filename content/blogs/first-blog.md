@@ -2,7 +2,7 @@
 title: "First Blog"
 date: 2020-12-18T14:53:30+07:00
 draft: false
-featuredImage: "/images/image-1.jpg"
+featuredImage: "/uploads/image-1.jpg"
 tags: 
   - world
   - weather

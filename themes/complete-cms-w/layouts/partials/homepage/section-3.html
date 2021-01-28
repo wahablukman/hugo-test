@@ -9,7 +9,9 @@
   
             <div class="card">
               <div class="avatar">
-                <img src="{{ .Params.avatar }}" alt="{{ .Params.name }}">
+                {{ $avatar := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .Params.avatar ) }}
+                {{ $resizedAvatar := $avatar.Resize "200x" }}
+                <img src="{{ $resizedAvatar.RelPermalink }}" alt="" loading="lazy">
               </div>
       
               <div class="name">
