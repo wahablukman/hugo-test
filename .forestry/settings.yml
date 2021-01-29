@@ -6,8 +6,8 @@ webhook_url:
 sections:
 - type: directory
   path: content
-  label: Pages
-  create: all
+  label: Single Pages
+  create: documents
   match: "*"
 - type: directory
   path: content/testimonials
