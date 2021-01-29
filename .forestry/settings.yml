@@ -28,9 +28,11 @@ sections:
   - home-slideshows
 - type: directory
   path: content/blogs
-  label: Blogs
-  create: all
+  label: Articles
+  create: documents
   match: "**/*"
+  templates:
+  - articles
 upload_dir: content/uploads
 public_path: "/uploads"
 front_matter_path: ''
