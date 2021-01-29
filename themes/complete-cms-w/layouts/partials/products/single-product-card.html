@@ -1,9 +1,7 @@
 <a class="card" href="{{ .RelPermalink }}">
   <div class="featured-image">
     {{ range first 2 .Params.productImages }}
-      {{ $productImage := ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" . ) }}
-      {{ $resizedProductImage := $productImage.Resize "390x" }}
-      <img src='{{ $resizedProductImage.RelPermalink }}' alt="" loading="lazy">
+      <img src='{{ . }}' alt="" loading="lazy">
     {{ end }}
   </div>
   <div class="other-details">
