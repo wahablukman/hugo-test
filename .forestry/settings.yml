@@ -7,7 +7,7 @@ sections:
 - type: directory
   path: content
   label: Single Pages
-  create: documents
+  create: none
   match: "*"
 - type: directory
   path: content/testimonials
