@@ -35,3 +35,5 @@ fields:
   config:
     required: true
   label: Author
+pages:
+- content/blogs/10-insane-but-true-things-about-modular-homes.md
