@@ -36,4 +36,5 @@ fields:
     required: true
   label: Author
 pages:
+- content/blogs/10-insane-but-true-things-about-modular-homes-copy.md
 - content/blogs/10-insane-but-true-things-about-modular-homes.md
