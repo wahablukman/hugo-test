@@ -72,5 +72,3 @@ fields:
   label: Bukalapak URL
   description: "(Optional) Your product's direct link on Bukalapak, will not be shown
     if you leave it blank."
-pages:
-- content/products/mountain-bear.md
