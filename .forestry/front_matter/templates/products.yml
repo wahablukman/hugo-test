@@ -1,4 +1,74 @@
 ---
 label: Products
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: true
+    min: 3
+  label: Product's Name
+- name: productImages
+  type: image_gallery
+  config: {}
+  label: Product's Images
+- name: date
+  type: datetime
+  label: Date
+  description: ''
+  config:
+    required: true
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: originalPrice
+  type: number
+  label: Original Price
+  description: ''
+  default: 10000
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
+- name: discountedPrice
+  type: number
+  label: Discounted Price
+  description: Leave it at '0' if there is <strong>no</strong> discounted price
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+    required: true
+- name: tokpedURL
+  type: text
+  config:
+    required: false
+  label: Tokopedia URL
+  description: "(Optional) Your product's direct link on Tokopedia, will not be shown
+    if you leave it blank."
+- name: shopeeURL
+  type: text
+  config:
+    required: false
+  label: Shopee URL
+  description: "(Optional) Your product's direct link on Shopee, will not be shown
+    if you leave it blank."
+- name: olx_url
+  type: text
+  config:
+    required: false
+  label: OLX URL
+  description: "(Optional) Your product's direct link on OLX, will not be shown if
+    you leave it blank."
+- name: bukalapakURL
+  type: text
+  config:
+    required: false
+  label: Bukalapak URL
+  description: "(Optional) Your product's direct link on Bukalapak, will not be shown
+    if you leave it blank."
