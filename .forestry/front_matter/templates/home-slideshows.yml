@@ -26,5 +26,3 @@ fields:
     required: false
   label: Link
   description: URL which the slideshow will point to
-pages:
-- content/home-slideshows/slideshow-3.md

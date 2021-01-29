@@ -20,13 +20,6 @@ sections:
   create: all
   match: "**/*"
 - type: directory
-  path: content/home-slideshows
-  label: Home slideshows
-  create: all
-  match: "**/*"
-  templates:
-  - home-slideshows
-- type: directory
   path: content/blogs
   label: Articles
   create: documents
