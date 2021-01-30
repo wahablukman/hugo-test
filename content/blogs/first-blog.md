@@ -1,6 +1,6 @@
 ---
 title: First Blog
-date: 2020-12-18T14:53:30.000+07:00
+date: 2020-12-18T14:53:30+07:00
 featuredImage: https://res.cloudinary.com/dlibzi68u/image/upload/v1612007151/hugo/image-1_ycsnuy.jpg
 tags:
 - world
