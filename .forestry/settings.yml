@@ -29,7 +29,7 @@ sections:
   templates:
   - articles
 upload_dir: hugo
-public_path: Test
+public_path: https://res.cloudinary.com/dlibzi68u/image/upload
 front_matter_path: https://res.cloudinary.com/dlibzi68u/image/upload
 use_front_matter_path: true
 file_template: ":filename:"
