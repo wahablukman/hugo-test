@@ -29,9 +29,9 @@ sections:
   templates:
   - articles
 upload_dir: hugo
-public_path: https://res.cloudinary.com/dlibzi68u/image/upload/hugo
-front_matter_path: https://res.cloudinary.com/dlibzi68u/image/upload/hugo
-use_front_matter_path: true
+public_path: "/test/hugo"
+front_matter_path: ''
+use_front_matter_path: false
 file_template: ":filename:"
 build:
   preview_env:
