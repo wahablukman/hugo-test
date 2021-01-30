@@ -73,6 +73,5 @@ fields:
   description: "(Optional) Your product's direct link on Bukalapak, will not be shown
     if you leave it blank."
 pages:
-- content/products/helmet-reflection-1.md
 - content/products/helmet-reflection.md
 - content/products/sushi-hug.md
