@@ -1,7 +1,7 @@
 ---
 title: What the world would be like if cool science experiments didn't exist
 date: 2020-12-23T18:03:44.000+07:00
-featuredImage: "/hugo/v1612006806/hugo/image-3_ikh2br.jpg"
+featuredImage: https://res.cloudinary.com/dlibzi68u/image/upload/v1612007058/hugo/image-3_xj88ui.jpg
 tags:
 - technology
 - science
