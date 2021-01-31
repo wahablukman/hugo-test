@@ -3,7 +3,8 @@
     {{ with .Params.featuredImage }}
       {{ $imageURL := . }}
       {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
-      <img width="450" height="300" src='{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.blogCardImgProcessing }}{{ $imageURLTrim }}' alt="" loading="lazy">
+      {{ $optimisedImage := printf "%s%s%s" $.Site.Params.imageURLProcessing $.Site.Params.blogCardImgProcessing $imageURLTrim }}
+      <img width="450" height="300" src='{{ $optimisedImage }}' alt="" loading="lazy">
     {{ end }}
   </div>
   <div class="title">{{ .Params.title | truncate 25 }}</div>

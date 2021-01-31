@@ -4,7 +4,8 @@
       {{ with . }}
         {{ $imageURL := . }}
         {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
-        <img width="400" height="400" src='{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.productCardImgProcessing }}{{ $imageURLTrim }}' alt="" loading="lazy">
+        {{ $optimisedImage := printf "%s%s%s" $.Site.Params.imageURLProcessing $.Site.Params.productCardImgProcessing $imageURLTrim }}
+        <img width="400" height="400" src='{{ $optimisedImage }}' alt="" loading="lazy">
       {{ end }}
     {{ end }}
   </div>
