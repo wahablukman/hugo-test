@@ -12,7 +12,7 @@
                 {{ with .Params.avatar }}
                   {{ $imageURL := . }}
                   {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
-                  <img src="{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.testimonyCardImgProcessing }}{{ $imageURLTrim }}" alt="" loading="lazy">
+                  <img width="200" height="200" src="{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.testimonyCardImgProcessing }}{{ $imageURLTrim }}" alt="" loading="lazy">
                 {{ end }}
               </div>
       
