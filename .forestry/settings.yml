@@ -12,8 +12,10 @@ sections:
 - type: directory
   path: content/testimonials
   label: Testimonials
-  create: all
+  create: documents
   match: "**/*"
+  templates:
+  - testimonials
 - type: directory
   path: content/products
   label: Products
