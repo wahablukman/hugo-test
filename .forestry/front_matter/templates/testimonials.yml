@@ -1,4 +1,26 @@
 ---
 label: Testimonials
 hide_body: false
-fields: []
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+    min: 2
+  label: Person's Name
+- name: date
+  type: datetime
+  label: Date
+  description: ''
+  config:
+    required: true
+    date_format: ''
+    time_format: 
+    display_utc: false
+  default: now
+- name: avatar
+  type: file
+  config:
+    maxSize: 2
+  label: Avatar
+  description: Testimonee's profile picture
