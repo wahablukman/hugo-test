@@ -62,27 +62,27 @@
         </div>
         <div class="store-links-title">Or shop this product on other stores: </div>
         <div class="store-links">
-          {{ if not (eq .Params.tokpedURL "") }}
-            <a class="link small-link tokopedia btn btn-primary with-icon" href="{{ .Params.tokpedURL }}">
-              <img src="/uploads/3rdparty-logos/logoicon-tokopedia.png" class="logo" alt="">
+          {{ with .Params.tokpedURL }}
+            <a class="link small-link tokopedia btn btn-primary with-icon" href="{{ . }}">
+              <img src="/images/3rdparty-logos/logoicon-tokopedia.png" class="logo" alt="">
               <div class="text">Tokopedia</div>
             </a>
           {{ end }}
-          {{ if not (eq .Params.shopeeURL "") }}
-            <a class="link small-link shopee btn btn-primary with-icon" href="{{ .Params.shopeeURL }}">
-              <img src="/uploads/3rdparty-logos/logoicon-shopee.png" class="logo" alt="">
+          {{ with .Params.shopeeURL }}
+            <a class="link small-link shopee btn btn-primary with-icon" href="{{ . }}">
+              <img src="/images/3rdparty-logos/logoicon-shopee.png" class="logo" alt="">
               <div class="text">Shopee</div>
             </a>
           {{ end }}
-          {{ if not (eq .Params.bukalapakURL "") }}
-            <a class="link small-link bukalapak btn btn-primary with-icon" href="{{ .Params.bukalapakURL }}">
-              <img src="/uploads/3rdparty-logos/logoicon-bukalapak.png" class="logo" alt="">
+          {{ with .Params.bukalapakURL }}
+            <a class="link small-link bukalapak btn btn-primary with-icon" href="{{ . }}">
+              <img src="/images/3rdparty-logos/logoicon-bukalapak.png" class="logo" alt="">
               <div class="text">Bukalapak</div>
             </a>
           {{ end }}
-          {{ if not (eq .Params.olxURL "") }}
-            <a class="link small-link olx btn btn-primary with-icon" href="{{ .Params.olxURL }}">
-              <img src="/uploads/3rdparty-logos/logoicon-olx.png" class="logo" alt="">
+          {{ with .Params.olxURL }}
+            <a class="link small-link olx btn btn-primary with-icon" href="{{ . }}">
+              <img src="/images/3rdparty-logos/logoicon-olx.png" class="logo" alt="">
               <div class="text">OLX</div>
             </a>
           {{ end }}
