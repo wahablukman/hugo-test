@@ -11,6 +11,10 @@ disqusShortname = "http-localhost-1313-11"
   dateDefaultFormat = "Monday, Jan 2, 2006"
   whatsappNumber = "+61430984666"
   ownerName = "WL"
+  imageURLProcessing = "https://res.cloudinary.com/dlibzi68u/image/upload/"
+  productCardImgProcessing = "f_webp,w_400/"
+  blogCardImgProcessing = "f_webp,w_450/"
+  testimonyCardImgProcessing = "f_webp,w_200/"
 
 [Taxonomies]
   tag = "tags"

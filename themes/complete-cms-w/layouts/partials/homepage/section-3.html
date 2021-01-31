@@ -9,7 +9,11 @@
   
             <div class="card">
               <div class="avatar">
-                <img src="{{ .Params.avatar }}" alt="" loading="lazy">
+                {{ with .Params.avatar }}
+                  {{ $imageURL := . }}
+                  {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
+                  <img src="{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.testimonyCardImgProcessing }}{{ $imageURLTrim }}" alt="" loading="lazy">
+                {{ end }}
               </div>
       
               <div class="name">

@@ -1,7 +1,11 @@
 <a class="card" href="{{ .RelPermalink }}">
   <div class="featured-image">
     {{ range first 2 .Params.productImages }}
-      <img src='{{ . }}' alt="" loading="lazy">
+      {{ with . }}
+        {{ $imageURL := . }}
+        {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
+        <img src='{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.productCardImgProcessing }}{{ $imageURLTrim }}' alt="" loading="lazy">
+      {{ end }}
     {{ end }}
   </div>
   <div class="other-details">

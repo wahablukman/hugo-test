@@ -1,6 +1,10 @@
 <a class="card" href="{{ .RelPermalink }}">
   <div class="featured-image">
-    <img src='{{ .Params.featuredImage }}' alt="" loading="lazy">
+    {{ with .Params.featuredImage }}
+      {{ $imageURL := . }}
+      {{ $imageURLTrim := strings.TrimLeft $.Site.Params.imageURLProcessing . }}
+      <img src='{{ $.Site.Params.imageURLProcessing }}{{ $.Site.Params.blogCardImgProcessing }}{{ $imageURLTrim }}' alt="" loading="lazy">
+    {{ end }}
   </div>
   <div class="title">{{ .Params.title | truncate 25 }}</div>
   <div class="paragraph">
