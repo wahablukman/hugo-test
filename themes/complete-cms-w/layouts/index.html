@@ -17,24 +17,26 @@
   // new Splide( '#splide', {
   //   type   : 'loop'
   // }).mount();
-	new Splide( '#splide-2', {
-    'arrowPath': 'm15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z',
-    type   : 'loop',
-    padding: {
-      right: '10rem',
-      left : '10rem',
-    },
-    perPage: 2,
-    breakpoints : {
-      '1024': {
-        perPage: 1,
-        padding: {
-          right: '0',
-          left : '0',
-        },
+  document.addEventListener('DOMContentLoaded', function() {
+    new Splide( '#splide-2', {
+      'arrowPath': 'm15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z',
+      type   : 'loop',
+      padding: {
+        right: '10rem',
+        left : '10rem',
+      },
+      perPage: 2,
+      breakpoints : {
+        '1024': {
+          perPage: 1,
+          padding: {
+            right: '0',
+            left : '0',
+          },
+        }
       }
-    }
-  } ).mount();
+    } ).mount();
+  })
 </script>
 
 

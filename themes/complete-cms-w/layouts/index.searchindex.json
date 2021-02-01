@@ -4,7 +4,7 @@
     {{ range $productImage := first 1 $page.Params.productImages }} 
       {{ $price := cond (gt $page.Params.discountedPrice 0) $page.Params.discountedPrice $page.Params.originalPrice }}
       {{ $entry := dict "uri" $page.RelPermalink "title" $page.Title "productImage" $productImage "price" $price }}
-      {{ $entry | jsonify (dict "prefix" " " "indent" "  ")  }}
+      {{ $entry | jsonify (dict "prefix" " " "indent" "  ") }}
     {{ end }}
   {{ end }}
 ]
